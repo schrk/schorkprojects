@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Schork Projects</title>
+  <meta name="description" content="Schork Projects — consultoria de desenvolvimento que cria projetos diversos com inteligência artificial. Fundada em abril de 2026.">
+  <meta property="og:title" content="Schork Projects">
+  <meta property="og:description" content="Consultoria de desenvolvimento que cria projetos diversos com inteligência artificial.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='17' text-anchor='middle' fill='%23fff'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf9;
+      --surface: #ffffff;
+      --text: #18181b;
+      --muted: #5f5f66;
+      --border: #e4e4e7;
+      --accent: #4f46e5;
+      --accent-soft: #eef2ff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0c0c0e;
+        --surface: #151518;
+        --text: #f4f4f5;
+        --muted: #a1a1aa;
+        --border: #27272a;
+        --accent: #818cf8;
+        --accent-soft: #1e1b4b;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-weight: 700; font-size: 1.05rem; text-decoration: none; letter-spacing: -0.01em; }
+    .logo span { color: var(--accent); }
+    nav { display: flex; gap: 24px; }
+    nav a { text-decoration: none; color: var(--muted); font-size: 0.95rem; }
+    nav a:hover { color: var(--text); }
+
+    .hero { padding: 112px 0 96px; }
+    .tag {
+      display: inline-block; font-size: 0.85rem; font-weight: 500;
+      color: var(--accent); background: var(--accent-soft);
+      padding: 4px 12px; border-radius: 999px; margin-bottom: 24px;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem); line-height: 1.1;
+      letter-spacing: -0.03em; font-weight: 700; max-width: 16ch;
+    }
+    .hero p { font-size: 1.2rem; color: var(--muted); max-width: 56ch; margin-top: 24px; }
+    .actions { display: flex; gap: 12px; margin-top: 36px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 12px 22px; border-radius: 10px;
+      font-weight: 600; text-decoration: none; font-size: 0.98rem;
+      border: 1px solid var(--border);
+    }
+    .btn.primary { background: var(--text); color: var(--bg); border-color: var(--text); }
+    .btn:hover { opacity: 0.85; }
+
+    section { padding: 80px 0; border-top: 1px solid var(--border); }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); letter-spacing: -0.02em; margin-bottom: 12px; }
+    .lead { color: var(--muted); max-width: 60ch; font-size: 1.05rem; }
+
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px;
+    }
+    .card .icon {
+      width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center;
+      background: var(--accent-soft); color: var(--accent); margin-bottom: 18px;
+    }
+    .card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 0.97rem; }
+
+    .steps { counter-reset: step; display: grid; gap: 16px; margin-top: 40px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .step { padding-top: 20px; border-top: 2px solid var(--text); }
+    .step::before {
+      counter-increment: step; content: "0" counter(step);
+      font-size: 0.85rem; font-weight: 600; color: var(--accent);
+    }
+    .step h3 { font-size: 1.05rem; margin: 6px 0; }
+    .step p { color: var(--muted); font-size: 0.95rem; }
+
+    .about { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; }
+    .facts { display: grid; gap: 12px; }
+    .fact { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; }
+    .fact strong { display: block; font-size: 1.3rem; letter-spacing: -0.01em; }
+    .fact span { color: var(--muted); font-size: 0.9rem; }
+
+    .contact { text-align: center; }
+    .contact .lead { margin: 0 auto; }
+    .contact .actions { justify-content: center; }
+
+    footer { border-top: 1px solid var(--border); padding: 32px 0; color: var(--muted); font-size: 0.9rem; }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+    @media (max-width: 720px) {
+      nav { display: none; }
+      .wrap { padding: 0 16px; }
+      .hero { padding: 72px 0 64px; }
+      section { padding: 64px 0; }
+      .about { grid-template-columns: 1fr; gap: 32px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a href="#" class="logo">Schork<span>.</span>Projects</a>
+      <nav>
+        <a href="#servicos">Serviços</a>
+        <a href="#processo">Como trabalhamos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero"><div class="wrap">
+      <span class="tag">Consultoria de desenvolvimento com IA</span>
+      <h1>Transformamos ideias em projetos reais com inteligência artificial.</h1>
+      <p>A Schork Projects cria soluções sob medida — de automações e assistentes inteligentes a produtos digitais completos — usando IA para entregar mais rápido e com mais qualidade.</p>
+      <div class="actions">
+        <a href="#contato" class="btn primary">Fale com a gente</a>
+        <a href="#servicos" class="btn">Ver serviços</a>
+      </div>
+    </div></div>
+
+    <section id="servicos">
+      <div class="wrap">
+        <h2>O que fazemos</h2>
+        <p class="lead">Projetos diversos, um mesmo princípio: usar IA onde ela realmente gera valor para o seu negócio.</p>
+        <div class="grid">
+          <div class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h3>Consultoria em IA</h3>
+            <p>Entendemos seu contexto, identificamos oportunidades e desenhamos a estratégia certa para aplicar IA no seu negócio.</p>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3>Desenvolvimento sob medida</h3>
+            <p>Sites, aplicativos, sistemas internos e integrações construídos com o apoio de IA, do protótipo à produção.</p>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3>Assistentes e agentes</h3>
+            <p>Chatbots, agentes e assistentes inteligentes que atendem clientes, organizam informações e executam tarefas.</p>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            </div>
+            <h3>Automação de processos</h3>
+            <p>Eliminamos tarefas repetitivas conectando ferramentas e dados com fluxos automatizados e inteligentes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="processo">
+      <div class="wrap">
+        <h2>Como trabalhamos</h2>
+        <p class="lead">Um processo simples e transparente, com entregas rápidas e você acompanhando cada etapa.</p>
+        <div class="steps">
+          <div class="step">
+            <h3>Entendimento</h3>
+            <p>Conversamos sobre o seu desafio, objetivos e o que já existe hoje.</p>
+          </div>
+          <div class="step">
+            <h3>Proposta</h3>
+            <p>Definimos o escopo, a solução e um plano claro de entregas.</p>
+          </div>
+          <div class="step">
+            <h3>Construção</h3>
+            <p>Desenvolvemos com IA em ciclos curtos, validando com você a cada passo.</p>
+          </div>
+          <div class="step">
+            <h3>Entrega e evolução</h3>
+            <p>Colocamos no ar e seguimos juntos para melhorar e expandir.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="wrap about">
+        <div>
+          <h2>Sobre a Schork Projects</h2>
+          <p class="lead">Fundada em abril de 2026, a Schork Projects nasceu para aproximar empresas e pessoas do potencial da inteligência artificial. Atuamos como uma consultoria de desenvolvimento: tiramos ideias do papel e criamos projetos dos mais diversos tipos, sempre com foco em resultado prático.</p>
+          <p class="lead" style="margin-top:16px">Acreditamos que a IA é uma ferramenta para amplificar o que as pessoas fazem de melhor — e é assim que construímos cada projeto.</p>
+        </div>
+        <div class="facts">
+          <div class="fact"><strong>Abril de 2026</strong><span>Fundação</span></div>
+          <div class="fact"><strong>IA em todo o processo</strong><span>Da ideia à entrega</span></div>
+          <div class="fact"><strong>Projetos diversos</strong><span>Sites, apps, automações e agentes</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="contact">
+      <div class="wrap">
+        <h2>Vamos construir algo juntos?</h2>
+        <p class="lead">Conte sobre a sua ideia ou desafio. Respondemos rapidinho.</p>
+        <div class="actions">
+          <a href="mailto:contato@schorkprojects.com" class="btn primary">contato@schorkprojects.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year">2026</span> Schork Projects</span>
+      <span>Consultoria de desenvolvimento com IA</span>
+    </div>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
